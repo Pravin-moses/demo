@@ -1,0 +1,15 @@
+{
+  "name": "bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "commonjs",
+  "description": "Static HTML birthday card with dynamic background",
+  "scripts": {
+    "install": "echo 'Nothing to install for static HTML project'",
+    "build": "mkdir -p dist && cp index.html dist/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
