@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday!</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        transition: background 3s ease; /* Smooth transition */
+    }
+
+    .card {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+    }
+
+    h1 {
+        color: #ff4b5c;
+        font-size: 3rem;
+        margin-bottom: 20px;
+        animation: colorChange 4s infinite alternate;
+    }
+
+    @keyframes colorChange {
+        0% { color: #ff4b5c; }
+        50% { color: #ffa500; }
+        100% { color: #ff4b5c; }
+    }
+
+    p {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 30px;
+    }
+
+    .balloons {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 200px;
+        height: 200px;
+        display: flex;
+        justify-content: space-between;
+        transform: translateX(-50%);
+    }
+
+    .balloon {
+        width: 40px;
+        height: 60px;
+        background-color: #ff4b5c;
+        border-radius: 50% 50% 50% 50%;
+        position: relative;
+        animation: rise 5s infinite linear;
+    }
+
+    .balloon:nth-child(2) { background-color: #ffa500; animation-delay: 1s; }
+    .balloon:nth-child(3) { background-color: #00c3ff; animation-delay: 2s; }
+    .balloon:nth-child(4) { background-color: #9b59b6; animation-delay: 3s; }
+
+    .balloon::after {
+        content: '';
+        position: absolute;
+        width: 2px;
+        height: 40px;
+        background: #333;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -40px;
+    }
+
+    @keyframes rise {
+        0% { transform: translateY(0) translateX(0); }
+        100% { transform: translateY(-600px) translateX(20px); }
+    }
+
+    button {
+        background-color: #ff4b5c;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1rem;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background-color: #ffa500;
+        transform: scale(1.1);
+    }
+</style>
+</head>
+<body>
+<div class="card">
+    <h1>Happy Birthday!</h1>
+    <p>Wishing you a day filled with love, joy, and lots of cake 🎂</p>
+    <button onclick="alert('Have a fantastic day! 🎉')">Click Me!</button>
+</div>
+
+<div class="balloons">
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+</div>
+
+<script>
+    // Array of gradient colors
+    const colors = [
+        ['#fceabb', '#f8b500'],
+        ['#ff9a9e', '#fad0c4'],
+        ['#a18cd1', '#fbc2eb'],
+        ['#84fab0', '#8fd3f4'],
+        ['#ffecd2', '#fcb69f']
+    ];
+
+    let index = 0;
+
+    function changeBackground() {
+        // Choose next gradient
+        const next = (index + 1) % colors.length;
+        // Apply gradient smoothly
+        document.body.style.background = `linear-gradient(135deg, ${colors[index][0]}, ${colors[index][1]})`;
+        index = next;
+    }
+
+    // Initial gradient
+    changeBackground();
+
+    // Change every 3 seconds smoothly
+    setInterval(changeBackground, 3000);
+</script>
+</body>
+</html>
